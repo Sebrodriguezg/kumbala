@@ -24,6 +24,7 @@
     <nav>
       <a href="#banda">La banda</a>
       <a href="#sonido">Sonido</a>
+      <a href="#galeria">Galería</a>
       <a href="#videos">Videos</a>
       <a href="#contacto" class="boton-mini">Contratar</a>
     </nav>
@@ -96,6 +97,38 @@
       <p class="eventos">Matrimonios · cumpleaños · eventos empresariales · clubes · hoteles · celebraciones privadas</p>
     </section>
 
+    <!-- GALERÍA -->
+    <section id="galeria" class="seccion revelar">
+      <p class="espaciado etiqueta">Galería</p>
+      <h2>Kúmbala en fotos</h2>
+      <div class="galeria" id="galeria-fotos">
+        <button type="button" class="foto ancha"><img src="img/galeria/terraza.webp" alt="La banda tocando en una terraza con la ciudad de fondo" loading="lazy"></button>
+        <button type="button" class="foto"><img src="img/galeria/sombreros.webp" alt="Tres guitarras con sombreros" loading="lazy"></button>
+        <button type="button" class="foto"><img src="img/galeria/grupo-instrumentos.webp" alt="Los cuatro integrantes con sus instrumentos" loading="lazy"></button>
+        <button type="button" class="foto"><img src="img/galeria/cumpleanos.webp" alt="Dúo de guitarras cantando en un cumpleaños" loading="lazy"></button>
+        <button type="button" class="foto"><img src="img/galeria/hotel.webp" alt="La banda en una tarima de hotel" loading="lazy"></button>
+        <button type="button" class="foto ancha"><img src="img/galeria/grupo-blanco.webp" alt="Retrato de los cuatro integrantes" loading="lazy"></button>
+        <button type="button" class="foto ancha"><img src="img/galeria/bajo.webp" alt="Bajo eléctrico azul" loading="lazy"></button>
+        <button type="button" class="foto"><img src="img/galeria/voz.webp" alt="Cantando al micrófono" loading="lazy"></button>
+        <button type="button" class="foto"><img src="img/galeria/tarima.webp" alt="Tarima con teclado y batería" loading="lazy"></button>
+        <button type="button" class="foto"><img src="img/galeria/duo-bajo.webp" alt="Ensayo con bajo" loading="lazy"></button>
+        <button type="button" class="foto"><img src="img/galeria/guitarra.webp" alt="Guitarra acústica" loading="lazy"></button>
+        <button type="button" class="foto ancha"><img src="img/galeria/grupo-cerca.webp" alt="Los cuatro integrantes juntos" loading="lazy"></button>
+      </div>
+      <dialog id="visor" class="visor"><button type="button" class="visor-cerrar" aria-label="Cerrar">×</button><img alt=""></dialog>
+    </section>
+
+    <!-- TEMPORADA -->
+    <section id="temporada" class="seccion temporada revelar">
+      <img src="img/navidad.webp" alt="Árbol de Navidad de luces con el logo de Kúmbala" loading="lazy">
+      <div>
+        <p class="espaciado etiqueta">Temporada decembrina</p>
+        <h2>Ponle música en vivo a tu fiesta de fin de año</h2>
+        <p>Novenas, fiestas de empresa y reuniones familiares: diciembre se agenda rápido.</p>
+        <a href="#contacto" class="boton">Reserva tu fecha</a>
+      </div>
+    </section>
+
     <!-- VIDEOS -->
     <section id="videos" class="seccion revelar">
       <p class="espaciado etiqueta">En vivo</p>
@@ -124,14 +157,13 @@
           <label>Invitados (aprox.) <input type="number" name="invitados" min="1" placeholder="80"></label>
           <label class="ancho">Algo más que debamos saber <textarea name="nota" rows="2" placeholder="Horario, canciones especiales…"></textarea></label>
           <div class="cotizar-botones ancho">
-            <button type="submit" class="boton" data-a="573124276447">WhatsApp Javier</button>
-            <button type="submit" class="boton" data-a="573107966440">WhatsApp Julio</button>
-            <button type="submit" class="boton boton-fantasma" data-a="correo">Correo</button>
+            <button type="submit" class="boton" data-a="573107966440">Enviar por WhatsApp</button>
+            <button type="submit" class="boton boton-fantasma" data-a="correo">Enviar por correo</button>
           </div>
         </form>
         <div class="datos-contacto">
-          <p><strong>Javier Monroy</strong><a href="tel:+573124276447">312 427 6447</a></p>
-          <p><strong>Julio Rodríguez</strong><a href="tel:+573107966440">310 796 6440</a></p>
+          <p><strong>Julio Rodríguez</strong><a href="https://wa.me/573107966440" target="_blank" rel="noopener">WhatsApp 310 796 6440</a><a href="tel:+573106742026">Llamadas 310 674 2026</a></p>
+          <p><strong>Instagram</strong><a href="https://www.instagram.com/kumbalamusic/" target="_blank" rel="noopener">@kumbalamusic</a></p>
           <p><strong>Correo</strong><a href="mailto:kumbalamusic@gmail.com">kumbalamusic@gmail.com</a></p>
         </div>
         <a href="descargas/press-kit-kumbala-2024.pdf" class="enlace-descarga" download>Descargar press kit (PDF)</a>

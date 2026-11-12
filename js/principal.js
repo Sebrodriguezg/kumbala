@@ -59,6 +59,17 @@ cajaGeneros.addEventListener('click', e => {
 });
 elegirGenero(Math.floor(Math.random() * GENEROS.length));
 
+// ---------- galería: ver foto en grande
+const visor = $('#visor');
+$('#galeria-fotos').addEventListener('click', e => {
+  const img = e.target.closest('.foto')?.querySelector('img');
+  if (!img || !visor.showModal) return;
+  visor.querySelector('img').src = img.src;
+  visor.querySelector('img').alt = img.alt;
+  visor.showModal();
+});
+visor.addEventListener('click', () => visor.close());
+
 // ---------- cotización: arma el mensaje y abre WhatsApp o el correo
 const CORREO = 'kumbalamusic@gmail.com';
 $('#cotizar').addEventListener('submit', e => {

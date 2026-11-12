@@ -21,7 +21,9 @@ python3 -m http.server 8765
 | `js/videos.js` | Videos de YouTube (se cargan solo al tocarlos) |
 | `datos/config.json` | Enlaces de redes y videos: **se editan aquí sin tocar código** |
 | `img/` | Logo, fotos e ícono |
+| `img/galeria/` | Fotos de la galería (del Drive de la banda) |
 | `descargas/` | Press kit en PDF liviano |
+| `promocion/` | Imágenes para redes: `redes/` (una por día, estado 1080×1920 y publicación 1080×1080) |
 
 ## Redes y videos
 
@@ -39,3 +41,16 @@ En `datos/config.json` llenar los enlaces. Las redes vacías no aparecen; si no 
 ```
 
 Redes soportadas: facebook, instagram, youtube, soundcloud, spotify, tiktok.
+
+## Imágenes para redes
+
+En `promocion/redes/` hay una imagen por día de la semana (más una general y una de diciembre), cada una en
+formato estado de WhatsApp/Instagram (`-estado`) y publicación cuadrada (`-post`). Todas llevan el QR de la
+página y el contacto de Julio.
+
+Para cambiar textos, fotos o colores, editar `promocion/dias.json` y regenerar:
+
+```bash
+uv venv .venv && uv pip install --python .venv/bin/python playwright
+.venv/bin/python promocion/generar.py   # usa Google Chrome instalado
+```
