@@ -1,0 +1,73 @@
+<!doctype html>
+<!-- Foto de perfil 1080×1080 (se ve en círculo). Variante por hash: #cuerdas, #brillo, #foto, #ambar -->
+<html lang="es"><head><meta charset="utf-8">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { width: 1080px; height: 1080px; overflow: hidden; position: relative; background: #141317; }
+  .capa { position: absolute; inset: 0; }
+  .logo { position: absolute; left: 50%; top: 50%; width: 760px; transform: translate(-50%, -47%); }
+  svg.capa { overflow: visible; }
+
+  /* A: brillo cálido detrás del logo + cuerdas */
+  .brillo { background: radial-gradient(circle at 50% 50%, #3a2616 0%, #1d1714 38%, #121115 70%); }
+  .brillo .logo { filter: drop-shadow(0 0 40px rgba(224,160,90,.45)) drop-shadow(0 8px 20px rgba(0,0,0,.6)); }
+
+  /* D: seis cuerdas de guitarra brillantes cruzando detrás del logo */
+  .cuerdas { background: radial-gradient(circle at 50% 50%, #2a1d14 0%, #17141a 45%, #0e0d11 75%); }
+  .cuerdas .logo { filter: drop-shadow(0 0 18px rgba(0,0,0,.95)) drop-shadow(0 0 50px rgba(0,0,0,.8)); }
+
+  /* B: foto de la banda en vivo, oscurecida */
+  .foto .fondo { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; filter: saturate(1.1) blur(3px); transform: scale(1.06); }
+  .foto .velo { background: radial-gradient(circle at 50% 50%, rgba(20,19,23,.55) 0%, rgba(20,19,23,.82) 60%, rgba(20,19,23,.95) 100%); }
+  .foto .logo { filter: drop-shadow(0 6px 26px rgba(0,0,0,.9)); }
+
+  /* C: fondo ámbar con logo oscuro */
+  .ambar { background: radial-gradient(circle at 35% 30%, #f0b36c 0%, #d9904a 45%, #a85f27 100%); }
+  .ambar .logo { filter: brightness(0) saturate(100%) invert(7%) sepia(6%) saturate(900%) hue-rotate(210deg) drop-shadow(0 4px 0 rgba(255,255,255,.15)); }
+</style></head>
+<body>
+  <img class="capa fondo" src="../img/banda-en-vivo.webp" alt="" hidden>
+  <div class="capa velo" hidden></div>
+  <svg class="capa" id="cuerdas" viewBox="0 0 1080 1080"></svg>
+  <img class="logo" src="../img/logo-kumbala.png" alt="Kúmbala Music Group">
+<script>
+  const v = location.hash.slice(1) || 'cuerdas';
+  document.body.className = v;
+  if (v === 'foto') document.querySelectorAll('[hidden]').forEach(e => e.hidden = false);
+  // cuerdas: líneas finas como en el press kit, que vibran (curvas) cerca del logo
+  const color = v === 'ambar' ? 'rgba(20,19,23,.35)' : 'rgba(224,160,90,.55)';
+  const tenue = v === 'ambar' ? 'rgba(20,19,23,.18)' : 'rgba(244,241,236,.16)';
+  const L = [];
+  // cuerdas horizontales que atraviesan el círculo por debajo y por encima del logo
+  const ondas = [[300, 22, color, 2.5], [790, 28, color, 2.5], [250, 0, tenue, 2], [840, 0, tenue, 2]];
+  for (const [y, a, c, w] of ondas) {
+    let d = `M 0 ${y}`;
+    for (let x = 0; x <= 1080; x += 10) {
+      const s = x / 1080;
+      d += ` L ${x} ${y + a * Math.sin(3 * Math.PI * s) * Math.sin(Math.PI * s)}`;
+    }
+    L.push(`<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}"/>`);
+  }
+  if (v === 'cuerdas') {
+    L.length = 0;
+    L.push(`<defs>
+      <linearGradient id="metal" x1="0" x2="1"><stop offset="0" stop-color="#e0a05a" stop-opacity="0"/><stop offset=".25" stop-color="#f3c48a"/><stop offset=".5" stop-color="#fff3e0"/><stop offset=".75" stop-color="#f3c48a"/><stop offset="1" stop-color="#e0a05a" stop-opacity="0"/></linearGradient>
+      <filter id="luz" x="-10%" y="-200%" width="120%" height="500%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>`);
+    // 6 cuerdas: de la más gruesa (abajo) a la más delgada (arriba), cada una vibrando con su modo
+    const grosor = [1.6, 2, 2.6, 3.2, 4, 5];
+    for (let i = 0; i < 6; i++) {
+      const y = 318 + i * 88, a = 14 + (i % 3) * 8, m = 2 + (i % 3);
+      let d = `M 60 ${y}`;
+      for (let x = 60; x <= 1020; x += 6) {
+        const s = (x - 60) / 960;
+        d += ` L ${x} ${(y + a * Math.sin(m * Math.PI * s) * Math.sin(Math.PI * s)).toFixed(1)}`;
+      }
+      L.push(`<path d="${d}" fill="none" stroke="url(#metal)" stroke-width="${grosor[i]}" filter="url(#luz)" opacity="${0.7 + i * 0.06}"/>`);
+    }
+    // notas pequeñas que salen de las cuerdas
+    L.push(`<g fill="#e0a05a" font-family="serif" opacity=".8"><text x="830" y="300" font-size="70">♪</text><text x="200" y="830" font-size="56" opacity=".7">♫</text></g>`);
+  }
+  document.getElementById('cuerdas').innerHTML = L.join('');
+</script>
+</body></html>
