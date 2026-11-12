@@ -1,3 +1,4 @@
+(() => {
 // Fondo de "cuerdas": las líneas finas del press kit convertidas en cuerdas que vibran
 // cuando el cursor (o el dedo) las cruza. Con el botón "Toca las cuerdas" además suenan
 // (síntesis Karplus-Strong, afinadas en una escala pentatónica).
@@ -205,3 +206,4 @@ botonSonar?.addEventListener('click', () => {
     pulsar(c, 0.35, 12);
   }
 });
+})();

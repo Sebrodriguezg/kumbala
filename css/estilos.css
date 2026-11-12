@@ -113,8 +113,8 @@ h2 {
   max-width: var(--ancho); margin: 0 auto;
   padding: clamp(70px, 12vw, 130px) 16px;
 }
-.revelar { opacity: 0; transform: translateY(30px); transition: opacity .9s, transform .9s; }
-.revelar.visto { opacity: 1; transform: none; }
+.js-listo .revelar { opacity: 0; transform: translateY(30px); transition: opacity .9s, transform .9s; }
+.js-listo .revelar.visto { opacity: 1; transform: none; }
 
 /* foto con integrantes */
 .foto-banda { position: relative; margin: 40px 0 0; border-radius: var(--radio); overflow: hidden; }
@@ -238,5 +238,5 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
-  .revelar { opacity: 1; transform: none; }
+  .js-listo .revelar { opacity: 1; transform: none; }
 }

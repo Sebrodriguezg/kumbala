@@ -1,3 +1,4 @@
+(() => {
 // Videos de YouTube. Se configuran en datos/config.json:
 //   "lista_reproduccion": enlace de una lista de YouTube (se actualiza sola desde YouTube)
 //   "videos": [{ "url": "https://youtu.be/...", "titulo": "...", "descripcion": "..." }]
@@ -5,12 +6,12 @@
 
 const esc = texto => String(texto).replace(/[&<>"']/g, ch => `&#${ch.charCodeAt(0)};`);
 
-export function idVideo(url) {
+function idVideo(url) {
   const m = String(url).match(/(?:youtu\.be\/|v=|\/embed\/|\/shorts\/|\/live\/)([\w-]{11})/);
   return m ? m[1] : /^[\w-]{11}$/.test(url) ? url : null;
 }
 
-export function idLista(url) {
+function idLista(url) {
   const m = String(url).match(/[?&]list=([\w-]+)/);
   return m ? m[1] : /^[\w-]{12,}$/.test(url) ? url : null;
 }
@@ -32,7 +33,7 @@ function tarjeta(v) {
   </article>`;
 }
 
-export function iniciarVideos(contenedor, videos) {
+function iniciarVideos(contenedor, videos) {
   const lista = idLista(videos.lista_reproduccion ?? '');
   const sueltos = (videos.videos ?? []).filter(v => idVideo(v.url ?? v.id));
   let html = '';
@@ -49,3 +50,6 @@ export function iniciarVideos(contenedor, videos) {
     boton.outerHTML = `<div class="video-portada">${reproductor(`https://www.youtube-nocookie.com/embed/${boton.dataset.id}?autoplay=1&rel=0`, titulo)}</div>`;
   });
 }
+
+window.iniciarVideos = iniciarVideos;
+})();

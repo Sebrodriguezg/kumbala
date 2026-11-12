@@ -1,4 +1,5 @@
-import { GENEROS, FRASES } from './datos.js';
+(() => {
+const { GENEROS, FRASES } = window;
 
 const $ = sel => document.querySelector(sel);
 const $$ = sel => [...document.querySelectorAll(sel)];
@@ -10,6 +11,8 @@ new IntersectionObserver(([e]) => barra.classList.toggle('visible', !e.isInterse
   .observe($('#inicio'));
 
 // ---------- secciones que aparecen al llegar
+// (las secciones solo se esconden para animarlas si este script corre; si falla, se ven igual)
+document.documentElement.classList.add('js-listo');
 const revelador = new IntersectionObserver(entradas => {
   for (const e of entradas) if (e.isIntersecting) { e.target.classList.add('visto'); revelador.unobserve(e.target); }
 }, { threshold: 0.1 });
@@ -99,7 +102,7 @@ async function cargarConfig() {
   $('#redes').innerHTML = redes.map(([red, url]) =>
     `<a href="${esc(url)}" target="_blank" rel="noopener" aria-label="${red}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONOS[red]}</svg></a>`).join('');
 
-  const { iniciarVideos } = await import('./videos.js');
-  iniciarVideos($('#lista-videos'), config.videos ?? {});
+  window.iniciarVideos($('#lista-videos'), config.videos ?? {});
 }
 cargarConfig();
+})();
