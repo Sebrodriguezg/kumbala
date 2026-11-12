@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kúmbala Music Group</title>
+  <meta name="description" content="Kúmbala Music Group: pop, música tropical y ritmos latinoamericanos con jazz, blues y bossa nova. Música en vivo para eventos en Bogotá desde 2014.">
+  <meta name="theme-color" content="#141317">
+  <meta property="og:title" content="Kúmbala Music Group">
+  <meta property="og:description" content="Pop, tropical y ritmos latinoamericanos con jazz, blues y bossa nova. Música en vivo desde 2014, Bogotá.">
+  <meta property="og:image" content="img/compartir.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="img/icono.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <canvas id="cuerdas" aria-hidden="true"></canvas>
+
+  <header id="barra">
+    <a href="#inicio" class="barra-logo"><img src="img/logo-kumbala.png" alt="Kúmbala"></a>
+    <nav>
+      <a href="#banda">La banda</a>
+      <a href="#sonido">Sonido</a>
+      <a href="#videos">Videos</a>
+      <a href="#contacto" class="boton-mini">Contratar</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- PORTADA -->
+    <section id="inicio" class="portada">
+      <h1><img src="img/logo-kumbala.png" alt="Kúmbala Music Group" class="portada-logo"></h1>
+      <hr class="linea">
+      <p class="espaciado">Música en vivo · Bogotá · desde 2014</p>
+      <p class="portada-frase" id="frase">Pop, tropical y ritmos latinoamericanos con un toque de jazz.</p>
+      <div class="portada-acciones">
+        <a href="#contacto" class="boton">Cotiza tu evento</a>
+        <button type="button" class="boton boton-fantasma" id="sonar" aria-pressed="false">
+          <span class="sonar-icono" aria-hidden="true">♪</span> <span id="sonar-texto">Toca las cuerdas</span>
+        </button>
+      </div>
+      <p class="pista" id="pista">Pasa el dedo o el cursor por las líneas del fondo.</p>
+      <a href="#banda" class="bajar" aria-label="Bajar">↓</a>
+    </section>
+
+    <!-- QUIÉNES SOMOS -->
+    <section id="banda" class="seccion revelar">
+      <p class="espaciado etiqueta">Press kit</p>
+      <h2>Energía, humor y mensajes positivos</h2>
+      <p class="texto-grande">
+        Desde su fundación en 2014 en Bogotá, Kúmbala ha fusionado pop, música tropical y ritmos
+        latinoamericanos con jazz, blues y bossa nova, creando un sonido único. Sus presentaciones
+        están llenas de energía, humor y mensajes positivos, buscando provocar alegría y reflexión
+        en su audiencia.
+      </p>
+
+      <figure class="foto-banda">
+        <img src="img/banda-en-vivo.webp" alt="Kúmbala tocando en vivo: bajo, percusión, guitarra y teclado" width="2000" height="990">
+        <button type="button" class="punto" style="--x:17%;--y:38%" data-i="0"><span>Duvan Gil</span></button>
+        <button type="button" class="punto" style="--x:33%;--y:52%" data-i="1"><span>Juan Reina</span></button>
+        <button type="button" class="punto" style="--x:51%;--y:30%" data-i="2"><span>Javier Monroy</span></button>
+        <button type="button" class="punto" style="--x:71%;--y:34%" data-i="3"><span>Julio Rodríguez</span></button>
+      </figure>
+
+      <ul class="integrantes" id="integrantes">
+        <li data-i="0"><span class="instrumento" aria-hidden="true">𝄢</span><strong>Duvan Gil</strong><small>Bajo y voz</small></li>
+        <li data-i="1"><span class="instrumento" aria-hidden="true">◉</span><strong>Juan Reina</strong><small>Percusión y voz</small></li>
+        <li data-i="2"><span class="instrumento" aria-hidden="true">♫</span><strong>Javier Monroy</strong><small>Guitarra y voz</small></li>
+        <li data-i="3"><span class="instrumento" aria-hidden="true">♬</span><strong>Julio Rodríguez</strong><small>Guitarra, piano y voz</small></li>
+      </ul>
+    </section>
+
+    <!-- SONIDO -->
+    <section id="sonido" class="seccion revelar">
+      <p class="espaciado etiqueta">Nuestro sonido</p>
+      <h2>Seis mundos en una misma tarima</h2>
+      <p>Toca un género para ver qué le aporta a Kúmbala.</p>
+      <div class="generos" id="generos" role="tablist"></div>
+      <p class="genero-texto" id="genero-texto" aria-live="polite"></p>
+    </section>
+
+    <!-- TARIMAS -->
+    <section id="tarimas" class="seccion revelar">
+      <p class="espaciado etiqueta">Han sonado en</p>
+      <h2>Escenarios donde hemos tocado</h2>
+      <ul class="lugares">
+        <li>Centro Comercial Cafam Floresta</li>
+        <li>Club de Suboficiales FF.AA.</li>
+        <li>Club Colina Campestre</li>
+        <li>Club Campestre Los Arrayanes</li>
+        <li>Hotel Bogotá</li>
+      </ul>
+      <p class="eventos">Matrimonios · cumpleaños · eventos empresariales · clubes · hoteles · celebraciones privadas</p>
+    </section>
+
+    <!-- VIDEOS -->
+    <section id="videos" class="seccion revelar">
+      <p class="espaciado etiqueta">En vivo</p>
+      <h2>Escúchanos</h2>
+      <div id="lista-videos"></div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="seccion contacto revelar">
+      <img src="img/banda-sombreros.webp" alt="" class="contacto-fondo" loading="lazy">
+      <div class="contacto-caja">
+        <p class="espaciado etiqueta">Contrataciones</p>
+        <h2>Lleva a Kúmbala a tu evento</h2>
+        <form id="cotizar" class="cotizar">
+          <label>Tipo de evento
+            <select name="tipo">
+              <option>Matrimonio</option>
+              <option>Cumpleaños</option>
+              <option>Evento empresarial</option>
+              <option>Club u hotel</option>
+              <option>Otro</option>
+            </select>
+          </label>
+          <label>Fecha <input type="date" name="fecha"></label>
+          <label>Ciudad o lugar <input type="text" name="lugar" placeholder="Bogotá"></label>
+          <label>Invitados (aprox.) <input type="number" name="invitados" min="1" placeholder="80"></label>
+          <label class="ancho">Algo más que debamos saber <textarea name="nota" rows="2" placeholder="Horario, canciones especiales…"></textarea></label>
+          <div class="cotizar-botones ancho">
+            <button type="submit" class="boton" data-a="573124276447">WhatsApp Javier</button>
+            <button type="submit" class="boton" data-a="573107966440">WhatsApp Julio</button>
+            <button type="submit" class="boton boton-fantasma" data-a="correo">Correo</button>
+          </div>
+        </form>
+        <div class="datos-contacto">
+          <p><strong>Javier Monroy</strong><a href="tel:+573124276447">312 427 6447</a></p>
+          <p><strong>Julio Rodríguez</strong><a href="tel:+573107966440">310 796 6440</a></p>
+          <p><strong>Correo</strong><a href="mailto:kumbalamusic@gmail.com">kumbalamusic@gmail.com</a></p>
+        </div>
+        <a href="descargas/press-kit-kumbala-2024.pdf" class="enlace-descarga" download>Descargar press kit (PDF)</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <nav class="redes" id="redes" aria-label="Redes sociales"></nav>
+    <p class="espaciado">Kúmbala Music Group</p>
+  </footer>
+
+  <script type="module" src="js/principal.js"></script>
+  <script type="module" src="js/cuerdas.js"></script>
+</body>
+</html>
